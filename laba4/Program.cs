@@ -64,7 +64,26 @@ namespace laba4
         {
             Var.multiplisity.RemoveAt(position);
         }
-        public class Date
+        public class Owner //2)
+        {
+            int id;
+            string name, organization;
+            public void Init() //инициализация
+            {
+                Console.Write("Введите Id: ");
+                id = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Введите имя создателя: ");
+                name = Console.ReadLine();
+                Console.Write("Введите организацию создателя: ");
+                organization = Console.ReadLine();
+                Console.WriteLine();
+            }
+            public void Info() //вывод содержимого
+            {
+                Console.WriteLine($"Id: {id}, имя создателя: {name}, организация создателя: {organization}");
+            }
+        }
+        public class Date //3)
         {
             int day, month, year;
             public void Init() //инициализация
@@ -81,27 +100,42 @@ namespace laba4
             {
                 Console.WriteLine($"Дата создания проекта: {day}.{month}.{year}");
             }
-        }
-        public class Owner
+        }        
+        public static class StatisticOperation //4)
         {
-            int id;
-            string name, organization;
-            public void Init() //инициализация
+            public static int Sum(Set Var) //сумма эл-в
             {
-                Console.Write("Введите Id: ");
-                id = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Введите имя создателя: ");
-                name = Console.ReadLine();
-                Console.Write("Введите организацию создателя: ");
-                organization= Console.ReadLine();
-                Console.WriteLine();
+                int sum = 0;
+                for (int i=0;i<Var.Count();i++)
+                {
+                    sum += Var.multiplisity[i];
+                }
+                return sum;
             }
-            public void Info() //вывод содержимого
+            public static int max_min_difference(Set Var) //разница между максимальным и минимальным
             {
-                Console.WriteLine($"Id: {id}, имя создателя: {name}, организация создателя: {organization}");
+                int max = Var.multiplisity[0], min = max;
+                for (int i = 0; i < Var.Count(); i++)
+                {
+                    if (Var.multiplisity[i] > max)
+                        max = Var.multiplisity[i];
+                    if (Var.multiplisity[i] < min)
+                        min = Var.multiplisity[i];                    
+                }
+                return max - min;
+            }
+            public static int amount(Set Var) //кол-во эл-в
+            {
+                int counter = 0;
+                for (int i = 0; i < Var.Count(); i++)
+                {
+                    counter++;
+                }
+                    return counter;
             }
         }
     }
+    
     class Program
     {
          static void Main(string[] args)
@@ -149,6 +183,7 @@ namespace laba4
             Set.Owner owner = new Set.Owner();
             owner.Init();
             owner.Info();
+
         }     
     }
 }
