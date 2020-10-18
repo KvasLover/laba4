@@ -7,13 +7,12 @@ namespace laba4
     public class Set
     {
         List<int> multiplisity = new List<int>();
-        //List<int> multiplisity2 = new List<int>();
-        public static Set operator ++(Set Var)
+        public static Set operator ++(Set Var) //перегрузка ++
         {
             Random rand = new Random();
             Var.Add(rand.Next());
             return Var;
-        } //перегрузка ++
+        }
         public void Add(int num) //метод добавления нового эл-та в мн-во
         {
             multiplisity.Add(num);
@@ -27,7 +26,7 @@ namespace laba4
             }
             return Var;
         }
-        public int Count()
+        public int Count() //подсчёт эл-в мн-ва
         {
             return multiplisity.Count();
         }
@@ -38,6 +37,26 @@ namespace laba4
                 Console.Write($"{multiplisity[i]} ");
             }
             Console.WriteLine();
+        }
+        public static Set operator <=(Set Var, Set Var2) //перегрузка <=
+        {
+
+            return Var;
+        }
+        public static Set operator >=(Set Var, Set Var2) //требование для перегрузки <=
+        {
+            return Var;
+        }
+        public static Set operator %(Set Var, Set Var2) //перегрузка %
+        {
+            Console.Write("К какой позиции получить доступ? ");
+            int position = Convert.ToInt32(Console.ReadLine());
+            Var.Remove(Var,position-1);
+            return Var;
+        }
+        public void Remove(Set Var,int position)
+        {
+            Var.multiplisity.RemoveAt(position);
         }
     }
     class Program
@@ -68,8 +87,10 @@ namespace laba4
             }
             (obj + obj2).Info(size1+3);
 
-            
-            
+            obj = obj % obj2;
+
+            Console.WriteLine("Первое мн-во без заданного эл-та: ");
+            obj.Info(size1+2);
         }     
     }
 }
