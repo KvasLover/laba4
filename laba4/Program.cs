@@ -46,6 +46,7 @@ namespace laba4
                 Console.WriteLine("Первое мн-во больше второго");
             else
                 Console.WriteLine("Первое мн-во такого же размера, как второе");
+            Console.WriteLine();
             return Var;
         }
         public static Set operator >=(Set Var, Set Var2) //требование для перегрузки <=
@@ -63,12 +64,30 @@ namespace laba4
         {
             Var.multiplisity.RemoveAt(position);
         }
+        public class Date
+        {
+            int day, month, year;
+            public void Init() //инициализация
+            {
+                Console.Write("Введите день создания: ");
+                day = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Введите месяц создания: ");
+                month = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Введите год создания: ");
+                year = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+            }
+            public void Info() //вывод содержимого
+            {
+                Console.WriteLine($"Дата создания проекта: {day}.{month}.{year}");
+            }
+        }
     }
     class Program
     {
          static void Main(string[] args)
          {
-            Set obj = new Set();
+            Set obj = new Set();            
             Console.Write("Введите начальное кол-во эл-в мн-ва: ");
             int size1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
@@ -104,6 +123,9 @@ namespace laba4
 
             obj = obj <= obj2;
 
+            Set.Date date = new Set.Date();
+            date.Init();
+            date.Info();
         }     
     }
 }
