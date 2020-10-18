@@ -82,6 +82,25 @@ namespace laba4
                 Console.WriteLine($"Дата создания проекта: {day}.{month}.{year}");
             }
         }
+        public class Owner
+        {
+            int id;
+            string name, organization;
+            public void Init() //инициализация
+            {
+                Console.Write("Введите Id: ");
+                id = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Введите имя создателя: ");
+                name = Console.ReadLine();
+                Console.Write("Введите организацию создателя: ");
+                organization= Console.ReadLine();
+                Console.WriteLine();
+            }
+            public void Info() //вывод содержимого
+            {
+                Console.WriteLine($"Id: {id}, имя создателя: {name}, организация создателя: {organization}");
+            }
+        }
     }
     class Program
     {
@@ -126,6 +145,10 @@ namespace laba4
             Set.Date date = new Set.Date();
             date.Init();
             date.Info();
+
+            Set.Owner owner = new Set.Owner();
+            owner.Init();
+            owner.Info();
         }     
     }
 }
