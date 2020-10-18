@@ -40,7 +40,12 @@ namespace laba4
         }
         public static Set operator <=(Set Var, Set Var2) //перегрузка <=
         {
-
+            if (Var.Count() < Var2.Count())
+                Console.WriteLine("Первое мн-во меньше второго");
+            else if(Var.Count() > Var2.Count())
+                Console.WriteLine("Первое мн-во больше второго");
+            else
+                Console.WriteLine("Первое мн-во такого же размера, как второе");
             return Var;
         }
         public static Set operator >=(Set Var, Set Var2) //требование для перегрузки <=
@@ -73,24 +78,32 @@ namespace laba4
                 obj.Add(Convert.ToInt32(Console.ReadLine()));
             }
             Console.WriteLine();
-            Console.WriteLine("Множества: ");
+            Console.WriteLine("Первое множество без и с новым эл-м");
             obj.Info(size1);
 
             obj++; //добавление нового эл-та (случайное число) в мн-во
             obj.Info(size1+1);
+            Console.WriteLine();
 
             Set obj2 = new Set();
             for (int i = 0; i < 2; i++)
             {
-                Console.Write($"Введите элемент {i + 1}: ");
+                Console.Write($"Введите элемент {i + 1} второго мн-ва: ");
                 obj2.Add(Convert.ToInt32(Console.ReadLine()));
             }
             (obj + obj2).Info(size1+3);
 
             obj = obj % obj2;
 
+            Console.WriteLine();
             Console.WriteLine("Первое мн-во без заданного эл-та: ");
             obj.Info(size1+2);
+            Console.WriteLine("Второе мн-во: ");
+            obj2.Info(2);
+            Console.WriteLine();
+
+            obj = obj <= obj2;
+
         }     
     }
 }
