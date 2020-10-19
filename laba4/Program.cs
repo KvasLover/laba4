@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace laba4
 {
@@ -100,19 +101,19 @@ namespace laba4
             {
                 Console.WriteLine($"Дата создания проекта: {day}.{month}.{year}");
             }
-        }        
+        }
         public static class StatisticOperation //4)
         {
             public static int Sum(Set Var) //сумма эл-в
             {
                 int sum = 0;
-                for (int i=0;i<Var.Count();i++)
+                for (int i = 0; i < Var.Count(); i++)
                 {
                     sum += Var.multiplisity[i];
                 }
                 return sum;
             }
-            public static int max_min_difference(Set Var) //разница между максимальным и минимальным
+            public static int Max_min_difference(Set Var) //разница между максимальным и минимальным
             {
                 int max = Var.multiplisity[0], min = max;
                 for (int i = 0; i < Var.Count(); i++)
@@ -120,21 +121,33 @@ namespace laba4
                     if (Var.multiplisity[i] > max)
                         max = Var.multiplisity[i];
                     if (Var.multiplisity[i] < min)
-                        min = Var.multiplisity[i];                    
+                        min = Var.multiplisity[i];
                 }
                 return max - min;
             }
-            public static int amount(Set Var) //кол-во эл-в
+            public static int Amount(Set Var) //кол-во эл-в
             {
                 int counter = 0;
                 for (int i = 0; i < Var.Count(); i++)
                 {
                     counter++;
                 }
-                    return counter;
+                return counter;
             }
         }
     }
+    /*public static class Wider
+    {        
+        public static string Wide_String(this string str)
+        {
+            string str2;
+            for(int i = 0; i < str.Length; i++)
+            {
+                str2[i] = str[i] + 1;
+            }
+            return str2;
+        }
+    }*/
     
     class Program
     {
@@ -184,6 +197,7 @@ namespace laba4
             owner.Init();
             owner.Info();
 
+            Console.WriteLine($"Сумма эл-в первого мн-ва: {Set.StatisticOperation.Sum(obj)}");
         }     
     }
 }
