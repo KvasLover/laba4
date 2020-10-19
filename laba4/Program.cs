@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace laba4
 {
@@ -136,24 +137,28 @@ namespace laba4
             }
         }
     }
-    /*public static class Wider
+    public static class Wider
     {        
         public static string Wide_String(this string str)
         {
-            string str2;
-            for(int i = 0; i < str.Length; i++)
+            char[] char1 = str.ToCharArray();
+            string string1 = "000000";
+            char[] char2 = string1.ToCharArray();
+            int length = str.Length;
+            for (int i = 0; i < length; i++)
             {
-                str2[i] = str[i] + 1;
+                char2[i] = char1[length - i - 1];
             }
-            return str2;
+            string string2 = new string(char2);
+            return string2;           
         }
-    }*/
+    }
     
     class Program
     {
          static void Main(string[] args)
          {
-            Set obj = new Set();            
+            /*Set obj = new Set();            
             Console.Write("Введите начальное кол-во эл-в мн-ва: ");
             int size1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
@@ -196,8 +201,13 @@ namespace laba4
             Set.Owner owner = new Set.Owner();
             owner.Init();
             owner.Info();
-
+            
             Console.WriteLine($"Сумма эл-в первого мн-ва: {Set.StatisticOperation.Sum(obj)}");
+            Console.WriteLine($"Разница между максимальным и минимальным эл-ми первого мн-ва: {Set.StatisticOperation.Max_min_difference(obj)}");
+            Console.WriteLine($"Кол-во эл-в мн-ва: {Set.StatisticOperation.Amount(obj)}");*/
+
+            string string1 = "STRING";           
+            Console.WriteLine($"{string1}, pезультат: {string1.Wide_String()}");
         }     
     }
 }
