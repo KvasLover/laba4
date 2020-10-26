@@ -8,7 +8,15 @@ namespace laba4
 {
     public class Set
     {
+        public int INT;
         public List<int> multiplisity = new List<int>();
+        /*public static int operator int(Set Var) //перегрузка int()
+        {
+            int amount;
+            Random rand = new Random();
+            Var.Add(rand.Next());
+            return amount;
+        }*/
         public static Set operator ++(Set Var) //перегрузка ++
         {
             Random rand = new Random();
@@ -27,6 +35,10 @@ namespace laba4
                 Var.Add(Var2.multiplisity[i]);
             }
             return Var;
+        }
+        public static explicit operator int(Set Var) //перегрузка int
+        {
+            return Var.Count();
         }
         public int Count() //подсчёт эл-в мн-ва
         {
@@ -169,6 +181,10 @@ namespace laba4
     {
          static void Main(string[] args)
          {
+            Set obj10 = new Set { INT = 10 };
+            int VAR = (int)obj10;
+
+            Console.WriteLine($"{VAR}");
             Set obj = new Set();            
             Console.Write("Введите начальное кол-во эл-в мн-ва: ");
             int size1 = Convert.ToInt32(Console.ReadLine());
@@ -186,7 +202,7 @@ namespace laba4
             obj.Info(size1+1);
             Console.WriteLine();
 
-            /*Set obj2 = new Set();
+            Set obj2 = new Set();
             for (int i = 0; i < 2; i++)
             {
                 Console.Write($"Введите элемент {i + 1} второго мн-ва: ");
@@ -215,11 +231,11 @@ namespace laba4
             
             Console.WriteLine($"Сумма эл-в первого мн-ва: {Set.StatisticOperation.Sum(obj)}");
             Console.WriteLine($"Разница между максимальным и минимальным эл-ми первого мн-ва: {Set.StatisticOperation.Max_min_difference(obj)}");
-            Console.WriteLine($"Кол-во эл-в мн-ва: {Set.StatisticOperation.Amount(obj)}");*/
+            Console.WriteLine($"Кол-во эл-в мн-ва: {Set.StatisticOperation.Amount(obj)}");
 
             string string1 = "STRING";
             Console.WriteLine($"{string1}, pезультат: {string1.Wide_String()}");
             Console.WriteLine($"Если во мн-ве каждый следующий эл-т больше предыдущего, это мн-во упорядоченное.\nПервое мн-во упорядоченное: {obj.Wide_Set()}");
-        }     
+        }   
     }
 }
