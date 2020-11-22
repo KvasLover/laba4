@@ -7,7 +7,7 @@ namespace laba4
     public interface IAdd_Delete_Look<T>
     {
         void Add(T var);
-        public void Remove(CollectionType<T> Var, int position);
+        void Remove(CollectionType<T> Var, int position);
         void Info(int size1);
     }
 }

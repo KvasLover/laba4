@@ -7,7 +7,7 @@ using System.Text;
 namespace laba4
 {
     // Класс использует конструктор без параметров (ограничение).
-    public class CollectionType<T> : IAdd_Delete_Look<T> where T : new()
+    public class CollectionType<T> : IAdd_Delete_Look<T>/* where T : new()*/
     {   
         // Объявление обобщённой коллекции.
         public List<T> multiplisity = new List<T>();
@@ -53,7 +53,17 @@ namespace laba4
                 Console.WriteLine();
                 Console.WriteLine("Множество: ");
                 obj.Info(size1);                
-                Console.WriteLine();                        
+                Console.WriteLine();
+
+                // 3).
+                Quest a = new Quest();
+                Console.Write("Введите Var: ");
+                a.Var = Console.ReadLine();
+                Class_for_3<Quest> obj2 = new Class_for_3<Quest>()
+                {
+                    Get_Set = a,
+                };
+                obj2.show();
             }
             catch(Exception ex)
             {
