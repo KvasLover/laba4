@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.IO;
 
 namespace laba4
 {
@@ -33,6 +34,27 @@ namespace laba4
         {
             Var.multiplisity.RemoveAt(position);
         }        
+        public void Write_to_file(int size1)
+        {
+            string Path = @"D:\labs\OOP\laba4-8\file.txt";
+            using (StreamWriter file = new StreamWriter(Path, false))
+            {
+                for (int i = 0; i < size1; i++)
+                {
+                    file.WriteLine(multiplisity[i]);
+                    //file.Write(multiplisity[i]+" ");
+                }
+            }
+        }
+        public static void Read_from_file(int size1)
+        {
+            string Path = @"D:\labs\OOP\laba4-8\file.txt";
+            Console.Write("Содержимое файла: ");
+            using (StreamReader file = new StreamReader(Path))
+            {
+                Console.WriteLine(file.ReadToEnd());
+            }
+        }
     }
     
     class Program
@@ -42,7 +64,7 @@ namespace laba4
             try
             {
                 CollectionType<int> obj = new CollectionType<int>();            
-                Console.Write("Введите кол-во эл-в мн-ва: ");
+                Console.Write("Введите кол-во эл-в коллекции: ");
                 int size1 = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
                 for(int i=0;i<size1;i++)
@@ -64,6 +86,10 @@ namespace laba4
                     Get_Set = a,
                 };
                 obj2.show();
+
+                // 4).
+                obj.Write_to_file(size1);
+                CollectionType<char>.Read_from_file(size1);
             }
             catch(Exception ex)
             {
@@ -73,6 +99,6 @@ namespace laba4
             {
                 Console.WriteLine("Конец блока обработки исключений catch и программы.");
             }
-        }   
+        }        
     }
 }
